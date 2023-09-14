@@ -10,3 +10,9 @@ edition = "2021"
 [features]
 default = []
 auth = []
+
+[workspace]
+members = [
+    ".",
+    "helpers/test2"
+]
