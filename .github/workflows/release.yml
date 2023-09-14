@@ -46,8 +46,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: t1-default
-          archive: t1-$target
+          bin: t1
+          archive: t1-default
           token: ${{ secrets.GITHUB_TOKEN }}
 
   publish_default_test2:
@@ -62,6 +62,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: t2-default
-          archive: t2-$target
+          bin: t2
+          archive: t2-default
           token: ${{ secrets.GITHUB_TOKEN }}
