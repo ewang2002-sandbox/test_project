@@ -30,7 +30,7 @@ jobs:
           bin: t1
           tar: unix
           zip: windows
-          archive: $bin-$target-${{ matrix.features }}
+          archive: t1-${{ matrix.features }}
           token: ${{ secrets.GITHUB_TOKEN }}
           features: ${{ matrix.features }}
 
@@ -46,8 +46,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: t1
-          archive: app-$target
+          bin: t1-default
+          archive: t1-$target
           token: ${{ secrets.GITHUB_TOKEN }}
 
   publish_default_test2:
@@ -62,6 +62,6 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: t2
-          archive: app-$target
+          bin: t2-default
+          archive: t2-$target
           token: ${{ secrets.GITHUB_TOKEN }}
