@@ -15,8 +15,8 @@ env:
 # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 # https://github.com/taiki-e/upload-rust-binary-action
 jobs:
-  publish_specific:
-    name: publish - ${{ matrix.os }} - ${{ matrix.features }}
+  publish_specific_test1:
+    name: publish(test1) - ${{ matrix.os }} - ${{ matrix.features }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -27,15 +27,15 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: ${{ github.event.repository.name }}
+          bin: test1
           tar: unix
           zip: windows
           archive: $bin-$target-${{ matrix.features }}
           token: ${{ secrets.GITHUB_TOKEN }}
           features: ${{ matrix.features }}
 
-  publish_default:
-    name: publish - ${{ matrix.os }} - default
+  publish_default_test1:
+    name: publish(test1) - ${{ matrix.os }} - default
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -46,8 +46,22 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          # (required) Comma-separated list of binary names (non-extension portion of filename) to build and upload.
-          # Note that glob pattern is not supported yet.
-          bin: test_project,test2
+          bin: test1
+          archive: app-$target
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_default_test2:
+    name: publish(test2) - ${{ matrix.os }} - default
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: taiki-e/upload-rust-binary-action@v1
+        with:
+          bin: test2
           archive: app-$target
           token: ${{ secrets.GITHUB_TOKEN }}
