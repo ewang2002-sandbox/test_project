@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: t1
+          bin: test1
           tar: unix
           zip: windows
           archive: t1-${{ matrix.features }}
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: t1
+          bin: test1
           archive: t1-default
           token: ${{ secrets.GITHUB_TOKEN }}
 
