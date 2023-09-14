@@ -49,5 +49,4 @@ jobs:
           bin: ${{ github.event.repository.name }},test2
           tar: unix
           zip: windows
-          archive: $bin-$target-default
           token: ${{ secrets.GITHUB_TOKEN }}
