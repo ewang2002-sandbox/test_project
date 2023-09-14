@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
         features: ["auth"]
 
     steps:
@@ -41,14 +41,12 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
-          - windows-latest
 
     steps:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          bin: ${{ github.event.repository.name }}
+          bin: ${{ github.event.repository.name }},test2
           tar: unix
           zip: windows
           archive: $bin-$target-default
